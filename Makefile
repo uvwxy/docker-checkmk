@@ -6,3 +6,6 @@ image:
 
 setup:
 	bash setup.sh
+
+clean:
+	rm -rf check_mk*

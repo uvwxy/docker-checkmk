@@ -35,10 +35,14 @@ ADD check_mk/ /setup/
 RUN cd /setup/ && bash setup.sh --yes
 
 # fix check_mk config (again)
-RUN cd /usr/share/check_mk/web/htdocs/ && sed -e 's/\/var\/log\/nagios\/rw\/live/\/var\/lib\/nagios3\/rw\/live/g' -i defaults.py 
+RUN sed -e 's/\/var\/log\/nagios\/rw\/live/\/var\/lib\/nagios3\/rw\/live/g' -i /usr/share/check_mk/web/htdocs/defaults.py 
+RUN sed -e 's/nagiosadmin/admin/g' -i /etc/check_mk/multisite.mk
+
+RUN chown nagios /etc/nagios/htpasswd.users 
+RUN chown nagios /etc/nagios/auth.serials 
 
 RUN cd /var/lib/check_mk/wato && mkdir auth && chgrp nagios auth && chmod 770 auth/
-RUN usermod -a -G nagios www-data
-
+#RUN usermod -a -G nagios www-data
 
 ADD run.sh /
+CMD ["bash", "/run.sh"]

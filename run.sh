@@ -2,9 +2,6 @@
 
 check_mk -O
 
-chown nagios /etc/nagios/htpasswd.users 
-chown nagios /etc/nagios/auth.serials 
-
 nagios3 -d /etc/nagios3/nagios.cfg
 
 source /etc/apache2/envvars 

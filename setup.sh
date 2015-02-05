@@ -1,6 +1,6 @@
 #!/bin/bash
 
-prefix="check_mk-1.2.4p5"
+prefix="check_mk-1.2.6b7"
 checkmkfile="$prefix.tar.gz"
 checkmkdir="check_mk/"
 
