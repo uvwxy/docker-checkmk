@@ -17,13 +17,14 @@ RUN cd /etc/ && ln -s nagios3 nagios
 RUN cd /usr/sbin/ && ln -s nagios3 nagios
 RUN cd /var/lib/ && rmdir nagios && ln -s nagios3 nagios
 RUN cd /var/log/ && ln -s /var/lib/nagios3 nagios
+RUN cd /etc/init.d/ && ln -s nagios3 nagios
 
 # add default admin account
 RUN cd /etc/nagios/ && htpasswd -bc htpasswd.users admin admin
 
 # add sudo rules required for check_mk
 RUN echo "Defaults:www-data !requiretty" >> /etc/sudoers
-RUN echo "www-data ALL = (root) NOPASSWD: /usr/bin/check_mk --automation *" >> /etc/sudoers
+RUN echo "nagios ALL = (root) NOPASSWD: /usr/bin/check_mk --automation *" >> /etc/sudoers
 
 # register livestatus
 RUN echo "broker_module=/usr/lib/check_mk/livestatus.o /var/lib/nagios/rw/live" >> /etc/nagios3/nagios.cfg 
