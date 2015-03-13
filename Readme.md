@@ -1,4 +1,4 @@
-# Crowsnest
+# Unofficial Docker Container for Check_MK
 
 Dockerized version of Check_MK (on a debian based container)
 
