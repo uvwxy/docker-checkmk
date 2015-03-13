@@ -1,6 +1,6 @@
-# Unofficial Docker Container for Check_MK
+# Docker-Check_MK
 
-Dockerized version of Check_MK (on a debian based container)
+Unofficial docker container of Check_MK (on a debian based container)
 
 This is the initial version that gets Check_MK up and running monitoring `localhost`
 
