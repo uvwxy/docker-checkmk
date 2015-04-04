@@ -12,6 +12,9 @@ RUN apt-get install -y \
 		sudo
 RUN apt-get clean
 
+ENV CMK_VERSION 1.2.4p5
+ENV CMK_FILE check_mk-$CMK_VERSION.tar.gz
+
 # fix check_mk looking in wrong places
 RUN cd /etc/ && ln -s nagios3 nagios
 RUN cd /usr/sbin/ && ln -s nagios3 nagios
@@ -32,8 +35,9 @@ RUN echo "event_broker_options=-1" >> /etc/nagios3/nagios.cfg
 
 
 # checkmk installation
-ADD check_mk/ /setup/
-RUN cd /setup/ && bash setup.sh --yes
+ADD http://mathias-kettner.de/download/$CMK_FILE /setup/
+RUN cd /setup/ && tar -xf check_mk-$CMK_VERSION.tar.gz
+RUN cd /setup/check_mk-$CMK_VERSION/ && bash setup.sh --yes
 
 # fix check_mk config (again)
 RUN sed -e 's/\/var\/log\/nagios\/rw\/live/\/var\/lib\/nagios3\/rw\/live/g' -i /usr/share/check_mk/web/htdocs/defaults.py 
@@ -44,6 +48,8 @@ RUN chown nagios /etc/nagios/auth.serials
 
 RUN cd /var/lib/check_mk/wato && mkdir auth && chgrp nagios auth && chmod 770 auth/
 #RUN usermod -a -G nagios www-data
+
+RUN rm -rf /setup/*
 
 ADD run.sh /
 CMD ["bash", "/run.sh"]

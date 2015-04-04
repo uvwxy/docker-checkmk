@@ -1,24 +1,21 @@
 # Docker-Check_MK
 
-Unofficial docker container of Check_MK (on a debian based container)
+Unofficial docker container of Check_MK
 
-This is the initial version that gets Check_MK up and running monitoring `localhost`
-
-### Prerequisite
-- install docker: check https://docs.docker.com/installation/#installation
-- git clone https://github.com/uvwxy/docker-checkmk.git
-
-## Setup
+####  Manual Build
 The following should download Check_MK and create a dockerfile named `uvwxy/checkmk`
+
 ```
-1) cd monitor/
-2) sudo make
-3) sudo docker run -p 80:80 uvwxy/checkmk
-   # option '-p 80:80' enables port forwarding
-4) check with your browser the webinterface of Check_MK 
-   by visiting http://localhost/check_mk/ with user=admin and pw=admin
+git clone https://github.com/uvwxy/docker-checkmk.git
+cd docker-checkmk/make
+make
 ```
 
-## TODO
+#### Run
 
-- create a client image that is monitored by the monitor image via SNMP
+```
+docker run -p 80:80 uvwxy/checkmk
+```
+
+Open in a browser:
+ `http://localhost/check_mk/` with `user=admin` and `password=admin`
