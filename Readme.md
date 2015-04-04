@@ -7,7 +7,7 @@ Build the image locally
 
 ```
 git clone https://github.com/uvwxy/docker-checkmk.git
-cd docker-checkmk/make
+cd docker-checkmk
 make
 ```
 
