@@ -6,14 +6,14 @@ This is the initial version that gets Check_MK up and running monitoring `localh
 
 ### Prerequisite
 - install docker: check https://docs.docker.com/installation/#installation
-- git clone https://github.com/uvwxy/crowsnest.git
+- git clone https://github.com/uvwxy/docker-checkmk.git
 
 ## Setup
-The following should download Check_MK and create a dockerfile named `uvwxy/crowsnest-monitor`
+The following should download Check_MK and create a dockerfile named `uvwxy/checkmk`
 ```
-1) cd crowsnest/monitor/
+1) cd monitor/
 2) sudo make
-3) sudo docker run -p 80:80 uvwxy/crowsnest-monitor
+3) sudo docker run -p 80:80 uvwxy/checkmk
    # option '-p 80:80' enables port forwarding
 4) check with your browser the webinterface of Check_MK 
    by visiting http://localhost/check_mk/ with user=admin and pw=admin
