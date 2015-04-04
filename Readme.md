@@ -3,7 +3,7 @@
 Unofficial docker container of Check_MK
 
 ####  Manual Build
-The following should download Check_MK and create a dockerfile named `uvwxy/checkmk`
+Build the image locally
 
 ```
 git clone https://github.com/uvwxy/docker-checkmk.git
