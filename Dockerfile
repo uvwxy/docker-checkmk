@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:wheezy
 MAINTAINER Paul Smith code@uvwxy.de
 
 # dependency setup
