@@ -2,6 +2,8 @@ FROM debian
 MAINTAINER Paul Smith code@uvwxy.de
 
 # dependency setup
+RUN echo "nagios3-cgi nagios3/adminpassword string admin" | debconf-set-selections
+RUN echo "nagios3-cgi nagios3/adminpassword-repeat string admin" | debconf-set-selections
 RUN apt-get update
 RUN apt-get install -y \
 		check-mk-livestatus \
