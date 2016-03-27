@@ -2,6 +2,8 @@ FROM debian
 MAINTAINER Paul Smith code@uvwxy.de
 
 # dependency setup
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list
+
 RUN apt-get update
 RUN apt-get install -y \
 		check-mk-livestatus \
